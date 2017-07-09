@@ -19,14 +19,19 @@ def load_list(file_name):
         return game_list
 
 
+def most_played_func(file_name, pos):
+    most_played_list = []
+    game_list = load_list(file_name)
+    for game in game_list:
+        most_played_list.append(float(game[pos]))
+    return most_played_list
+
 #  1
 
 
 def get_most_played(file_name):
-    most_played_list = []
+    most_played_list = most_played_func(file_name, 1)
     game_list = load_list(file_name)
-    for game in game_list:
-        most_played_list.append(float(game[1]))
     most_played = int(most_played_list.index(max(most_played_list)))
     most_played_game = game_list[most_played][0]
     return most_played_game
@@ -35,20 +40,14 @@ def get_most_played(file_name):
 
 
 def sum_sold(file_name):
-    most_played_list = []
-    game_list = load_list(file_name)
-    for game in game_list:
-        most_played_list.append(float(game[1]))
+    most_played_list = most_played_func(file_name, 1)
     return sum(most_played_list)
 
 #  3
 
 
 def get_selling_avg(file_name):
-    most_played_list = []
-    game_list = load_list(file_name)
-    for game in game_list:
-        most_played_list.append(float(game[1]))
+    most_played_list = most_played_func(file_name, 1)
     average = sum(most_played_list)/len(most_played_list)
     return average
 
@@ -66,10 +65,7 @@ def count_longest_title(file_name):
 
 
 def get_date_avg(file_name):
-    most_played_list = []
-    game_list = load_list(file_name)
-    for game in game_list:
-        most_played_list.append(float(game[2]))
+    most_played_list = most_played_func(file_name, 2)
     average = round(sum(most_played_list)/len(most_played_list), 0)
     return average
 
