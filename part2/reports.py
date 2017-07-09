@@ -2,12 +2,22 @@
 # Report functions
 
 
+import csv
+
+
 def load_list(file_name):
     game_list = []
     with open(file_name) as stats:
         for row in stats:
             game_list.append(list(row.strip().split('\t')))
-    return game_list
+    game_list_csv = []
+    if '.csv' in file_name:
+        for sublist in game_list:
+            game_list_csv.append(sublist[0].split(','))
+        return game_list_csv
+    else:
+        return game_list
+
 
 #  1
 
